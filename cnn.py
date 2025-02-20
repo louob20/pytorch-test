@@ -111,17 +111,15 @@ image, label = test_data[random.randint(0, len(test_data)-1)]  # Change index to
 
 
 # Preprocess and reshape for model input
-image = image.unsqueeze(0)  # Add batch dimension and move to GPU if available
+image = image.unsqueeze(0)
 
 # Make prediction
 with torch.no_grad():
     output = model(image)
     predicted_label = torch.argmax(output).item()
 
-print(f"Predicted Label: {predicted_label}")
-
 # Display the image
 import matplotlib.pyplot as plt
 plt.imshow(image.squeeze(), cmap="gray")
-plt.title(f"True Label: {label}")
+plt.title(f"True: {label}, Predicted: {predicted_label}")
 plt.show()
