@@ -103,11 +103,13 @@ for t in range(epochs):
     test(test_dataloader, model, loss_fn)
 print("Done!")
 
-torch.save(model.state_dict(), "model.pth")
-print("Saved PyTorch Model State to model.pth")
+
+# saving the model
+torch.save(model.state_dict(), "fashion.pth")
+print("Saved PyTorch Model State to fashion.pth")
 
 model = NeuralNetwork().to(device)
-model.load_state_dict(torch.load("model.pth", weights_only=True))
+model.load_state_dict(torch.load("fashion.pth", weights_only=True))
 
 classes = [
     "T-shirt/top",
